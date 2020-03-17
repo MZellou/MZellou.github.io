@@ -1,0 +1,39 @@
+---
+title: "Marouane Zellou, Curriculum Vitae"
+output: 
+  flexdashboard::flex_dashboard:
+    navbar:
+      - { title: "About", href: "https://example.com/about", align: left }
+    orientation: columns
+    vertical_layout: fill
+    source: https://github.com/MZellou/MZellou.github.io
+---
+
+Column 
+-------------------------------------
+    
+### Chart 1
+    
+```{r}
+library(highcharter)
+library(tibble)
+data <- tibble(label = c("R", "Matlab", "Python"), data = c(0.5, 0.3, 0.2))
+
+ highchart() %>% 
+ hc_chart(type = "pie") %>% 
+ hc_add_series_labels_values(labels = data$label, values = data$data)
+
+```
+   
+Column {.tabset .tabset-fade}
+-------------------------------------
+   
+### Chart 2
+
+```{r}
+```   
+ 
+### Chart 3
+    
+```{r}
+```
