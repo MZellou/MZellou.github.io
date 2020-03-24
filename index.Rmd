@@ -9,31 +9,98 @@ output:
     source: https://github.com/MZellou/MZellou.github.io
 ---
 
+<!-- TODO tableau  -->
 Column 
 -------------------------------------
     
-### Chart 1
     
-```{r}
-library(highcharter)
-library(tibble)
-data <- tibble(label = c("R", "Matlab", "Python"), data = c(0.5, 0.3, 0.2))
-
- highchart() %>% 
- hc_chart(type = "pie") %>% 
- hc_add_series_labels_values(labels = data$label, values = data$data)
-
+```{r,results="asis"}
+library(rmarkdown)
+library(htmltools)
+# cat( paste( readLines( "./HTML/vertical_timeline.html" ), collapse="\n" ))
+h3("Hello")
+h2("Bonjour")
 ```
    
 Column {.tabset .tabset-fade}
 -------------------------------------
    
-### Chart 2
+### Scolarité
 
 ```{r}
+library(highcharter)
+library(tibble)
+data <- tibble(label = c("R", "Matlab", "Python","HTML/CSS/JS"), data = c(10, 7, 5, 2))
+
+ highchart() %>% 
+ hc_chart(type = "pie") %>% 
+ hc_add_series_labels_values(labels = data$label, values = data$data)
 ```   
  
-### Chart 3
+### Timevis
+    
+```{r}
+library(timevis)
+
+# Template for world cup HTML of each item
+templateCode <- function(stage, team1, team2, score1, score2) {
+  sprintf(
+    '<table><tbody>
+      <tr><td colspan="3"><em>%s</em></td></tr>
+      <tr>
+        <td>%s</td>
+        <th>&nbsp;%s - %s&nbsp;</th>
+        <td>%s</td>
+      </tr>
+      <tr>
+        <td><img src="flags/%s.png" width="31" height="20" alt="%s"></td>
+        <th></th>
+        <td><img src="flags/%s.png" width="31" height="20" alt="%s"></td>
+      </tr>
+    </tbody></table>',
+    stage, team1, score1, score2, team2, gsub("\\s", "", tolower(team1)),
+    team1, gsub("\\s", "", tolower(team2)), team2
+  )
+}
+
+dataBasic <- data.frame(
+  id = 1:6,
+  
+  
+  
+  content = c(HTML('Java <br> <img src="www/java.png" width="31" height="20" alt="%s">'),
+              HTML('Matlab <br> <img src="www/matlab.png" width="31" height="20" alt="%s">'), 
+              HTML('Python <br> <img src="www/python.png" width="31" height="20" alt="%s">'), 
+              HTML('Matlab <br> <img src="www/matlab.png" width="31" height="20" alt="%s">'), 
+              HTML('R <br> <img src="www/R.png" width="31" height="20" alt="%s">'),
+              HTML('HTML/CSS/Js <br> <img src="www/html.jpg" width="31" height="20" alt="%s">
+                   <img src="www/css.png" width="31" height="20" alt="%s">
+                   <img src="www/js.png" width="31" height="20" alt="%s">')
+              ),
+  start   = c("2016-01-10", "2017-04-01", "2017-09-01", "2018-04-01", "2018-09-01", "2019-01-01"),
+  end    = NA#c("2016-09-01", "2017-10-01", "2018-09-01", "2017-09-01", Sys.Date())
+)
+ config <- list(
+      editable = F,
+      align = "center",
+      orientation = "top",
+      snap = NULL,
+      margin = list(item = 30, axis = 50)
+    )
+
+    timevis(dataBasic, zoomFactor = 1, options = config)
+
+    
+    
+
+```
+
+### Premier poste
+    
+```{r}
+```
+
+### Hobbies
     
 ```{r}
 ```
