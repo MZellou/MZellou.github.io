@@ -7,34 +7,66 @@ output:
     orientation: columns
     vertical_layout: fill
     source: https://github.com/MZellou/MZellou.github.io
+    css: styles.css
 ---
 
+<!-- Page 1 -->
+<!-- =====================================  -->
 <!-- TODO tableau  -->
+
 Column 
 -------------------------------------
     
+<!-- ![an image caption Source: Ultimate Funny Dog Videos Compilation 2013.](www/moi.png) -->
     
 ```{r,results="asis"}
 library(rmarkdown)
 library(htmltools)
+library(flexdashboard)
 # cat( paste( readLines( "./HTML/vertical_timeline.html" ), collapse="\n" ))
-h3("Hello")
-h2("Bonjour")
+h3("Mon parcours")
+# icon::fa("cog", size = 2, animate = "rotate")
+
+HTML(source("HTML/timeline.R")$value)
 ```
    
 Column {.tabset .tabset-fade}
 -------------------------------------
    
-### Scolarité
+### Informations   
+
+```{r,out.width = "200px"}
+library(icon)
+library(knitr)
+library(icon)
+library(png)
+include_graphics("www/moi.png") 
+HTML("blablabla blablabla blablabla blablabla blablabla blablabla ")
+HTML("<br>")
+
+```   
+```{r}
+fa_address_card(size = 2, animate = "rotate")
+HTML("Adresse")
+HTML("<br>")
+fa_phone(size = 2, animate = "rotate")
+HTML("Tel")
+HTML("<br>")
+
+HTML("<br>")
+
+```   
+   
+### Code
 
 ```{r}
 library(highcharter)
 library(tibble)
 data <- tibble(label = c("R", "Matlab", "Python","HTML/CSS/JS"), data = c(10, 7, 5, 2))
 
- highchart() %>% 
- hc_chart(type = "pie") %>% 
- hc_add_series_labels_values(labels = data$label, values = data$data)
+highchart() %>% 
+hc_chart(type = "pie") %>% 
+hc_add_series_labels_values(labels = data$label, values = data$data)
 ```   
  
 ### Timevis
@@ -65,9 +97,6 @@ templateCode <- function(stage, team1, team2, score1, score2) {
 
 dataBasic <- data.frame(
   id = 1:6,
-  
-  
-  
   content = c(HTML('Java <br> <img src="www/java.png" width="31" height="20" alt="%s">'),
               HTML('Matlab <br> <img src="www/matlab.png" width="31" height="20" alt="%s">'), 
               HTML('Python <br> <img src="www/python.png" width="31" height="20" alt="%s">'), 
@@ -88,11 +117,16 @@ dataBasic <- data.frame(
       margin = list(item = 30, axis = 50)
     )
 
-    timevis(dataBasic, zoomFactor = 1, options = config)
+timevis(dataBasic, zoomFactor = 1, options = config)
 
     
     
 
+```
+
+### Langues
+    
+```{r}
 ```
 
 ### Premier poste
@@ -100,7 +134,5 @@ dataBasic <- data.frame(
 ```{r}
 ```
 
-### Hobbies
-    
-```{r}
-```
+<!-- Page 2 -->
+<!-- =====================================  -->
