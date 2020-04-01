@@ -44,10 +44,24 @@
             <li>Développement d\'algorithmes de routage de véhicules à l\'aide de l\'échantillonage par copules.</li>
             <li>Analyse des comportements de mobilité des personnes âgées et handicapées.</li>
             <li>Modélisation d’un service de transport à la demande avec partage de courses dans la ville de New York. </li>
-            <li>Dimensionnement de la flotte necessaire au fonctionnement du service.</li></p>
+            <li>Dimensionnement de la flotte necessaire au fonctionnement du service.</li>
+            </p>
           </div>
         </div>
       </div>
+      
+      <div class="timeline__box">
+        <div class="timeline__post">
+          <div class="timeline__content">
+            <p><b>Rédaction d\'un article scientifique sur les algorithmes de routage des véhicules : </b>
+            <li>Article présenté à la conférence International Federation of Operational Research Societies (IFORS) [par Mahdieh ALLAHVIRANLOO]</li>
+            <li>Article présenté [par Mahdieh ALLAHVIRANLOO] et publié à la conférence Transportation Reasearch Board (TRB)</li>
+            <li>Pour plus d\'informations sur l\'article : <a href="https://journals.sagepub.com/doi/abs/10.1177/0361198118797829">visitez le site du TRB</a></li>
+            </p>
+          </div>
+        </div>
+      </div>
+      
     </div>
     
     <div class="timeline__group">

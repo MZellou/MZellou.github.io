@@ -41,7 +41,7 @@ library(knitr)
 library(icon)
 library(png)
 include_graphics("www/moi.png") 
-HTML(" Chef de projets intormatiques <br> Ministère de la Transition Écologique et Solidaire ")
+HTML(" Développeur, statisticien <br> Ministère de la Transition Écologique et Solidaire ")
 HTML("<br>")
 
 ```   
