@@ -3,10 +3,10 @@ title: "Marouane Zellou, Curriculum Vitae"
 output: 
   flexdashboard::flex_dashboard:
     navbar:
-      - { title: "About", href: "https://example.com/about", align: left }
+      - { title: "À propos", href: "https://example.com/about", align: left,icon: "fa-home"}
+      - { title: "Code source", href: "https://github.com/MZellou/MZellou.github.io", align: left,icon: "fa-code"}
     orientation: columns
     vertical_layout: fill
-    source: https://github.com/MZellou/MZellou.github.io
     css: styles.css
 ---
 
@@ -47,13 +47,11 @@ HTML("<br>")
 ```   
 ```{r}
 fa_address_card(size = 2, animate = "rotate")
-HTML("Adresse")
-HTML("<br>")
+HTML("Adresse<br>")
 fa_phone(size = 2, animate = "rotate")
-HTML("Tel")
-HTML("<br>")
-
-HTML("<br>")
+HTML("Tel<br>")
+fa(name = "cog", size = 2, animate = "rotate")
+HTML("CV réutilisable<br>")
 
 ```   
    
@@ -74,7 +72,7 @@ hc_title(text = "Temps passé sur chaque langage de programmation") %>%
 ```   
  
 
-    
+### Timevis
 ```{r}
 library(timevis)
 
@@ -112,7 +110,7 @@ dataBasic <- data.frame(
               ),
   start   = c("2016-01-10", "2017-04-01", "2017-09-01", "2018-04-01", "2018-09-01", "2019-01-01"),
   # end    = c("2016-09-01", "2017-10-01", "2018-09-01", "2018-09-01", Sys.Date(), Sys.Date())
-  end = c("2016-09-01", "2017-10-01", "2018-09-01", "2018-09-01", "2020-10-01", "2020-10-01")
+  end = c("2016-09-01", "2017-10-01", "2018-09-01", "2018-09-01", "2020-04-01", "2020-04-01")
 )
  config <- list(
       editable = F,
