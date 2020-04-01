@@ -30,7 +30,7 @@ h3("Mon parcours")
 HTML(source("HTML/timeline.R")$value)
 ```
    
-Column {.tabset .tabset-fade}
+Column {.tabset data-height=10000}
 -------------------------------------
    
 ### Informations   
@@ -41,7 +41,7 @@ library(knitr)
 library(icon)
 library(png)
 include_graphics("www/moi.png") 
-HTML("blablabla blablabla blablabla blablabla blablabla blablabla ")
+HTML(" Chef de projets intormatiques <br> Ministère de la Transition Écologique et Solidaire ")
 HTML("<br>")
 
 ```   
@@ -66,10 +66,14 @@ data <- tibble(label = c("R", "Matlab", "Python","HTML/CSS/JS"), data = c(10, 7,
 
 highchart() %>% 
 hc_chart(type = "pie") %>% 
-hc_add_series_labels_values(labels = data$label, values = data$data)
+hc_add_series_labels_values(labels = data$label, values = data$data, size = 500, style = list(fontSize = "20px")) %>% 
+hc_title(text = "Temps passé sur chaque langage de programmation") %>%
+  hc_subtitle(text = "Le détail est présenté dans la frise chronologique et dans l'onglet TimeViz")
+
+
 ```   
  
-### Timevis
+
     
 ```{r}
 library(timevis)
@@ -107,7 +111,8 @@ dataBasic <- data.frame(
                    <img src="www/js.png" width="31" height="20" alt="%s">')
               ),
   start   = c("2016-01-10", "2017-04-01", "2017-09-01", "2018-04-01", "2018-09-01", "2019-01-01"),
-  end    = NA#c("2016-09-01", "2017-10-01", "2018-09-01", "2017-09-01", Sys.Date())
+  # end    = c("2016-09-01", "2017-10-01", "2018-09-01", "2018-09-01", Sys.Date(), Sys.Date())
+  end = c("2016-09-01", "2017-10-01", "2018-09-01", "2018-09-01", "2020-10-01", "2020-10-01")
 )
  config <- list(
       editable = F,
@@ -127,6 +132,18 @@ timevis(dataBasic, zoomFactor = 1, options = config)
 ### Langues
     
 ```{r}
+library(formattable)
+
+langues <- tibble(
+  Langue = c("Francais","Anglais","Arabe","Japonais","Chinois"),
+  Niveau = c("Professionnel","Professionnel","Langue natale","Débutant","Débutant"),
+  Note = c(10, 9, 4, 1, 1)
+)
+
+formattable(langues, list(
+  area(col = Note) ~ normalize_bar("pink", 0.2)
+))
+
 ```
 
 ### Premier poste
