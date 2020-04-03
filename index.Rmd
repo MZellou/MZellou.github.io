@@ -60,7 +60,7 @@ HTML("CV réutilisable<br>")
 ```{r}
 library(highcharter)
 library(tibble)
-data <- tibble(label = c("R", "Matlab", "Python","HTML/CSS/JS"), data = c(10, 7, 5, 2))
+data <- tibble(label = c("R", "Matlab", "Python","HTML/CSS/JS", "Docker"), data = c(10, 7, 5, 2, 2))
 
 highchart() %>% 
 hc_chart(type = "pie") %>% 
@@ -76,41 +76,22 @@ hc_title(text = "Temps passé sur chaque langage de programmation") %>%
 ```{r}
 library(timevis)
 
-# Template for world cup HTML of each item
-templateCode <- function(stage, team1, team2, score1, score2) {
-  sprintf(
-    '<table><tbody>
-      <tr><td colspan="3"><em>%s</em></td></tr>
-      <tr>
-        <td>%s</td>
-        <th>&nbsp;%s - %s&nbsp;</th>
-        <td>%s</td>
-      </tr>
-      <tr>
-        <td><img src="flags/%s.png" width="31" height="20" alt="%s"></td>
-        <th></th>
-        <td><img src="flags/%s.png" width="31" height="20" alt="%s"></td>
-      </tr>
-    </tbody></table>',
-    stage, team1, score1, score2, team2, gsub("\\s", "", tolower(team1)),
-    team1, gsub("\\s", "", tolower(team2)), team2
-  )
-}
-
 dataBasic <- data.frame(
-  id = 1:6,
+  id = 1:8,
   content = c(HTML('Java <br> <img src="www/java.png" width="31" height="20" alt="%s">'),
               HTML('Matlab <br> <img src="www/matlab.png" width="31" height="20" alt="%s">'), 
               HTML('Python <br> <img src="www/python.png" width="31" height="20" alt="%s">'), 
+              HTML('Linux <br> <img src="www/linux.png" width="31" height="20" alt="%s">'),
               HTML('Matlab <br> <img src="www/matlab.png" width="31" height="20" alt="%s">'), 
               HTML('R <br> <img src="www/R.png" width="31" height="20" alt="%s">'),
-              HTML('HTML/CSS/Js <br> <img src="www/html.jpg" width="31" height="20" alt="%s">
+              HTML('HTML/CSS/Js <br> <img src="www/html.png" width="31" height="20" alt="%s">
                    <img src="www/css.png" width="31" height="20" alt="%s">
-                   <img src="www/js.png" width="31" height="20" alt="%s">')
+                   <img src="www/js.png" width="31" height="20" alt="%s">'),
+              HTML('Docker <br> <img src="www/docker.png" width="31" height="20" alt="%s">')
               ),
-  start   = c("2016-01-10", "2017-04-01", "2017-09-01", "2018-04-01", "2018-09-01", "2019-01-01"),
+  start   = c("2016-01-10", "2017-04-01", "2017-09-01", "2017-09-01", "2018-04-01", "2018-09-01", "2019-01-01", "2019-01-01"),
   # end    = c("2016-09-01", "2017-10-01", "2018-09-01", "2018-09-01", Sys.Date(), Sys.Date())
-  end = c("2016-09-01", "2017-10-01", "2018-09-01", "2018-09-01", "2020-04-01", "2020-04-01")
+  end = c("2016-09-01", "2017-10-01", "2018-09-01", "2020-04-01", "2018-09-01", "2020-04-01", "2020-04-01", "2020-04-01")
 )
  config <- list(
       editable = F,
@@ -133,14 +114,19 @@ timevis(dataBasic, zoomFactor = 1, options = config)
 library(formattable)
 
 langues <- tibble(
-  Langue = c("Francais","Anglais","Arabe","Japonais","Chinois"),
-  Niveau = c("Professionnel","Professionnel","Langue natale","Débutant","Débutant"),
+  Langue = c(HTML('<img src="www/flags/france.png" width="31" height="20" alt="%s"> Français'),
+             HTML('<img src="www/flags/UK.png" width="31" height="20" alt="%s"> Anglais'),
+             HTML('<img src="www/flags/morocco.png" width="31" height="20" alt="%s"> Arabe'),
+             HTML('<img src="www/flags/japan.png" width="31" height="20" alt="%s"> Japonais'),
+             HTML('<img src="www/flags/china.png" width="31" height="20" alt="%s"> Chinois')
+             ),
+  Niveau = c("Professionnel","Professionnel","Langue natale","Loisir","Loisir"),
   Note = c(10, 9, 4, 1, 1)
 )
 
 formattable(langues, list(
   area(col = Note) ~ normalize_bar("pink", 0.2)
-))
+), align = c("l", "l", "r"))
 
 ```
 
